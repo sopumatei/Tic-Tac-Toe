@@ -1,0 +1,44 @@
+/* IMPORTING FONT */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+/* RESET */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* MAIN STYLE */ 
+html {
+    font-size: 1.2rem;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOARD */
+#board {
+    border: 4px solid black;
+    width: min(500px, 80vh);
+    height: min(500px, 80vh);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.board-el {
+    border: 4px solid black;
+}
+
+.board-el:hover {
+    cursor: pointer;
+}
