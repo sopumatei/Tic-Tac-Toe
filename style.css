@@ -23,6 +23,7 @@ body {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
 /* BOARD */
@@ -37,6 +38,14 @@ body {
 
 .board-el {
     border: 4px solid black;
+    display: flex;
+    place-content: center;
+    align-items: center;
+}
+
+.board-el img {
+    width: 80%;
+    height: 80%;
 }
 
 .board-el:hover {
