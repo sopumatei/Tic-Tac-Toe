@@ -1,4 +1,5 @@
 const boardEl = document.querySelectorAll('.board-el');
+const resetBtn = document.getElementById('reset-btn');
 
 const createPlayer = (type, start) => {
     const getType = () => type;
@@ -96,7 +97,11 @@ const main = () => {
             const currentEl = boardEl[i];
             currentEl.innerHTML = '';
         }
+
+        resetBtn.style.transform = 'scale(0)';
     }
+
+    resetBtn.addEventListener('click', resetGame);
 
     const hoverFunction = (el, index) => {
         if(!squares[index] && !playerO.win && !playerX.win) {
@@ -147,14 +152,14 @@ const main = () => {
                 console.log('O: ' + playerO.blocksOccupied);
                 console.log('X: ' + playerX.blocksOccupied);
                 console.log('Game Ended');
-                setTimeout(resetGame, 1000);
+                resetBtn.style.transform = 'scale(1)';
             }
 
             if(!playerO.win && !playerX.win && arrFilled(squares)) {
                 console.log('O: ' + playerO.blocksOccupied);
                 console.log('X: ' + playerX.blocksOccupied);
                 console.log('Draw');
-                setTimeout(resetGame, 1000);
+                resetBtn.style.transform = 'scale(1)';
             }
         }
     }
