@@ -1,5 +1,6 @@
 const boardEl = document.querySelectorAll('.board-el');
 const resetBtn = document.getElementById('reset-btn');
+const resultTxt = document.getElementById('result-txt');
 
 const createPlayer = (type, start) => {
     const getType = () => type;
@@ -99,6 +100,7 @@ const main = () => {
         }
 
         resetBtn.style.transform = 'scale(0)';
+        resultTxt.style.transform = 'scale(0)';
     }
 
     resetBtn.addEventListener('click', resetGame);
@@ -153,12 +155,22 @@ const main = () => {
                 console.log('X: ' + playerX.blocksOccupied);
                 console.log('Game Ended');
                 resetBtn.style.transform = 'scale(1)';
+
+                if(playerO.win) {
+                    resultTxt.textContent = "O has won!";
+                }
+                else {
+                    resultTxt.textContent = "X has won!";
+                }
+                resultTxt.style.transform = 'scale(1)';
             }
 
             if(!playerO.win && !playerX.win && arrFilled(squares)) {
                 console.log('O: ' + playerO.blocksOccupied);
                 console.log('X: ' + playerX.blocksOccupied);
                 console.log('Draw');
+                resultTxt.textContent = "Draw";
+                resultTxt.style.transform = 'scale(1)';
                 resetBtn.style.transform = 'scale(1)';
             }
         }

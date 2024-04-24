@@ -86,3 +86,8 @@ body {
 #reset-btn:hover::before {
     opacity: 0.2;
 }
+
+#result-txt {
+    transform: scale(0);
+    transition: all 0.3s ease-in-out;
+}
