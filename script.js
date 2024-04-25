@@ -2,6 +2,8 @@ const boardEl = document.querySelectorAll('.board-el');
 const resetBtn = document.getElementById('reset-btn');
 const resultTxt = document.getElementById('result-txt');
 const resultLine = document.getElementById('result-line');
+const scoreX = document.getElementById('score-X'); 
+const scoreO = document.getElementById('score-O'); 
 
 const createPlayer = (type, start) => {
     const getType = () => type;
@@ -10,8 +12,11 @@ const createPlayer = (type, start) => {
     let active = start;
     let blocksOccupied = [];
     let win = false;
+    let score = 0;
+    const addScore = () => ++score;
+    const getScore = () => score;
 
-    return {getType, active, blocksOccupied, hoverImg, clickImg, win};
+    return {getType, active, blocksOccupied, hoverImg, clickImg, win, addScore, getScore};
 }
 
 const hasWon = (playerArray) => {
@@ -237,9 +242,13 @@ const main = () => {
 
                 if(playerO.win) {
                     resultTxt.textContent = "O has won!";
+                    playerO.addScore();
+                    scoreO.textContent = `O: ${playerO.getScore()}`;
                 }
                 else {
                     resultTxt.textContent = "X has won!";
+                    playerX.addScore();
+                    scoreX.textContent = `X: ${playerX.getScore()}`;
                 }
                 resultTxt.style.transform = 'scale(1)';
             }

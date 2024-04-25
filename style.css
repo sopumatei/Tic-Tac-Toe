@@ -94,27 +94,6 @@ body {
 }
 
 /* RESULT LINE */
-/* #board::before {
-    position: absolute;
-    content: '';
-    top: 0;
-    bottom: 0;
-    left: 48%;
-    right: 48%;
-    transform: rotate(-45deg);
-    background-color: tomato;
-    transform: scaleX(0);
-} */
-/* 
-#result-line {
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-} */
-
 .container {
     position: relative;
 }
@@ -130,3 +109,10 @@ body {
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
     transform: scale(0);
 } 
+
+/* SCORE */
+#score {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1rem;
+}
