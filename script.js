@@ -1,6 +1,7 @@
 const boardEl = document.querySelectorAll('.board-el');
 const resetBtn = document.getElementById('reset-btn');
 const resultTxt = document.getElementById('result-txt');
+const resultLine = document.getElementById('result-line');
 
 const createPlayer = (type, start) => {
     const getType = () => type;
@@ -26,6 +27,72 @@ const hasWon = (playerArray) => {
         [0, 4, 8],
         [2, 4, 6]
     ];
+
+    const line = [
+        {
+            top: 14,
+            bottom: 81,
+            left: 0,
+            right: 0,
+            deg: 0
+        },
+
+        {
+            top: 48,
+            bottom: 48,
+            left: 0,
+            right: 0,
+            deg: 0
+        },
+
+        {
+            top: 81,
+            bottom: 14,
+            left: 0,
+            right: 0,
+            deg: 0
+        },
+
+        {
+            top: 0,
+            bottom: 0,
+            left: 14,
+            right: 81,
+            deg: 0
+        },
+
+        {
+            top: 0,
+            bottom: 0,
+            left: 48,
+            right: 48,
+            deg: 0
+        },
+
+        {
+            top: 0,
+            bottom: 0,
+            left: 81,
+            right: 14,
+            deg: 0
+        },
+
+        {
+            top: -10,
+            bottom: -10,
+            left: 48,
+            right: 48,
+            deg: -45
+        },
+
+        {
+            top: -10,
+            bottom: -10,
+            left: 48,
+            right: 48,
+            deg: 45
+        }
+    ]
 
     const binarySearch = (arr, nr) => {
         let st = 0, dr = arr.length - 1;
@@ -57,13 +124,19 @@ const hasWon = (playerArray) => {
 
         for(let i = 0; i < 3; ++i) {
             if(!binarySearch(playerArray, currentComb[i])) {
-                //console.log("Player: " + playerArray + " current: " + currentComb);
+                // console.log("Player: " + playerArray + " current: " + currentComb);
                 foundComb = false;
                 break;
             }
         }
 
         if(foundComb) {
+            resultLine.style.top = `${line[k].top}%`;
+            resultLine.style.bottom = `${line[k].bottom}%`;
+            resultLine.style.left = `${line[k].left}%`;
+            resultLine.style.right = `${line[k].right}%`;
+            resultLine.style.transform = `rotate(${line[k].deg}deg)`;
+            resultLine.style.transform += 'scale(1)';
             break;
         }
     }
@@ -101,6 +174,12 @@ const main = () => {
 
         resetBtn.style.transform = 'scale(0)';
         resultTxt.style.transform = 'scale(0)';
+        resultLine.style.transform = 'scale(0)';
+
+        resultLine.style.top = 0;
+        resultLine.style.bottom = 0;
+        resultLine.style.left = 0;
+        resultLine.style.right = 0;  
     }
 
     resetBtn.addEventListener('click', resetGame);
