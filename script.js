@@ -170,8 +170,13 @@ const main = () => {
 
     const resetGame = () => {
         squares = [];
-        playerX = createPlayer('x', true);
-        playerO = createPlayer('o', false);
+        //Reset all of the player stats
+        playerX.blocksOccupied = [];
+        playerO.blocksOccupied = [];
+        playerX.active = true;
+        playerO.active = false;
+        playerX.win = false;
+        playerO.win = false;
         for(let i = 0; i < boardEl.length; ++i) {
             const currentEl = boardEl[i];
             currentEl.innerHTML = '';
